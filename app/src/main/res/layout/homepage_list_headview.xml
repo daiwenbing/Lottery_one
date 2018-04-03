@@ -2,39 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
         android:id="@+id/lay_pager"
         android:layout_width="match_parent"
         android:layout_height="160dp">
+
         <android.support.v4.view.ViewPager
             android:id="@+id/adv_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible">
-        </android.support.v4.view.ViewPager>
+            android:visibility="visible"></android.support.v4.view.ViewPager>
+
         <LinearLayout
             android:id="@+id/viewGroup"
-            android:layout_below="@id/adv_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/adv_pager"
             android:layout_marginTop="-40dp"
             android:gravity="center"
-            android:orientation="horizontal" >
-        </LinearLayout>
+            android:orientation="horizontal"></LinearLayout>
     </RelativeLayout>
+
     <include
         android:id="@+id/layout_mq"
-        android:layout_marginTop="-20dp"
+        layout="@layout/home_mequree_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay_pager"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_below="@+id/lay_pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/home_mequree_txt"/>
+        android:layout_marginTop="-20dp" />
+
     <include
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/layout_mq"
+        layout="@layout/homepage_head_include"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/homepage_head_include"/>
+        android:layout_below="@+id/layout_mq"
+        android:layout_marginTop="8dp" />
 </RelativeLayout>

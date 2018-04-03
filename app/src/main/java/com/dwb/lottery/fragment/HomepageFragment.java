@@ -149,17 +149,21 @@ public class HomepageFragment extends Fragment {
         */
         imageUrls = new String[]{
                 "http://m.dididapiao.com/upload/cms/news/images/2017/12/20/tn_up_201712201706000007.png",
+                "http://www.lottery.gov.cn/upload/20180306/20180306102116902.jpg",
+                "http://www.lottery.gov.cn/upload/20180207/20180207084852830.jpg",
                 "http://m.159cai.com/uploads/180328/2-1P32P92AL45.jpg",
-                "http://m.dididapiao.com/upload/cms/news/images/2018/3/27/tn_up_201803271034000037.png",
-                "http://m.159cai.com/uploads/180302/2-1P302114923240.jpg",
-                "http://m.159cai.com/uploads/180313/2-1P313105F0448.png"
+                "http://m.159cai.com/uploads/180403/2-1P40310552I61.jpg",
+                "https://r.dididapiao.com/image/bill/and-720x312-gd.jpg",
+                "http://m.159cai.com/uploads/180326/2-1P3261044512L.png"
         };
-        banner_list = new ArrayList();
+        banner_list = new ArrayList();http:
         banner_list.add("http://m.lottech.cn/vue/views/didi/betRedPlan.html#/redPlan/1/D33269DE20A5278C6517B89FC1940850-384234?hiddenHead=true");
+        banner_list.add("http://hgame.lottery.gov.cn/2018lianghuigy/");
+        banner_list.add("http://hgame.lottery.gov.cn/1802zhuantigy/mobile.html");
         banner_list.add("http://m.159cai.com/sjbguanyajun/guanjun.html");
         banner_list.add("http://mapi.159cai.com/discovery/news/football/2018/0330/33094.html");
         banner_list.add("http://m.159cai.com/discovery/news/football/2018/0302/32651.html");
-        banner_list.add("http://mapi.159cai.com/discovery/news/basketball/2018/0328/33054.html");
+        banner_list.add("http://m.159cai.com/huodong/hdxsdsb.html");
 
     }
 
@@ -189,7 +193,7 @@ public class HomepageFragment extends Fragment {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
             //设置每个小圆点距离左边的间距
-            margin.setMargins(Constant.WIDTHPIXELS / 10, 0, 0, 0);
+            margin.setMargins(Constant.WIDTHPIXELS / 20, 0, 0, 0);
             imageView = new ImageView(getActivity());
             //设置每个小圆点的宽高
             imageView.setLayoutParams(new LinearLayout.LayoutParams(20, 20));

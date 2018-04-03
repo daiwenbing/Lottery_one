@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <LinearLayout android:gravity="center"
+    android:fitsSystemWindows="true"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:id="@+id/layout_shouye"
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:textSize="@dimen/TextSize_12"
-            android:text="比分直播"/>
+            android:text="体彩信息"/>
     </LinearLayout>
 <LinearLayout android:gravity="center"
     android:layout_gravity="center"
@@ -67,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:textSize="@dimen/TextSize_12"
-        android:text="精彩资讯"/>
+        android:text="数据图表"/>
 </LinearLayout>
 <LinearLayout
     android:gravity="center"

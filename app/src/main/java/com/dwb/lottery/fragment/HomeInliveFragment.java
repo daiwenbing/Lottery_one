@@ -1,35 +1,46 @@
 package com.dwb.lottery.fragment;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 import com.dwb.lottery.R;
+import com.dwb.lottery.viewpager_adaper.HoeViewPageAdapter;
+import com.zhengsr.viewpagerlib.indicator.TabIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
-/**比分直播
+/**
  * Created by dwb on 2018/3/26.
  */
 
 public class HomeInliveFragment extends Fragment {
-    private WebView webview;
-    private WebSettings webSettings;
-    private ProgressBar progressbar;
+
+    @BindView(R.id.line_indicator)
+    TabIndicator line_indicator;
+    @BindView(R.id.home_live_viewpager)
+    ViewPager home_live_viewpager;
+    private List<Fragment> list;
+    private List<String> mtitle;
+    private HoeViewPageAdapter pageAdapter;
+    private Unbinder unbinder;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.webview_notitle_view,null);
+        View view = inflater.inflate(R.layout.homelivelayout, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
@@ -38,60 +49,35 @@ public class HomeInliveFragment extends Fragment {
         initview();
 
     }
-    public void initview(){
-        progressbar= (ProgressBar)getView().findViewById(R.id.progressbar);
-        webview=(WebView)getView().findViewById(R.id.webview);
-        init();
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
-    private void init(){
-        //WebView加载web资源
-        webview.loadUrl("http://nlive.159cai.com/live");
-        webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);//启用加速，否则滑动界面不流畅
-        webSettings = webview.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setUseWideViewPort(true);//关键点
-        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        webSettings.setLoadWithOverviewMode(true);
-        webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
-        webSettings.setBuiltInZoomControls(true); // 设置显示缩放按钮
-//        webSettings.setAppCacheEnabled(true);//是否使用缓存
-        webSettings.setSupportZoom(true); // 支持缩放
-        //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
-        webview.setWebViewClient(new WebViewClient(){
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                progressbar.setVisibility(View.VISIBLE);
-            }
 
+    public void initview() {
+        list=new ArrayList<Fragment>();
+        list.add(new Page_Fragment_One());
+        list.add(new Page_Fragment_Two());
+        list.add(new Page_Fragment_Three());
+        mtitle=new ArrayList<String>();
+        mtitle.add("时时比分");
+        mtitle.add("大神推荐");
+        mtitle.add("更多彩种");
+        pageAdapter=new HoeViewPageAdapter(getChildFragmentManager(),list);
+        home_live_viewpager.setAdapter(pageAdapter);
+        home_live_viewpager.setCurrentItem(0);
+        // 设置 viewpager的切换速度，这样点击的时候比较自然
+        line_indicator.setViewPagerSwitchSpeed(home_live_viewpager,600);
+        line_indicator.setTabData(home_live_viewpager,mtitle, new TabIndicator.TabClickListener() {
             @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                progressbar.setVisibility(View.INVISIBLE);
-            }
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                // TODO Auto-generated method stub
-                //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
-                view.loadUrl(url);
-                return false;
-            }
-
-            @Override
-            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                super.onReceivedError(view, request, error);
-                view.loadUrl("file:///android_asset/error.html");//加载本地网页的路径
+            public void onClick(int position) {
+                //顶部点击的方法公布出来
+                home_live_viewpager.setCurrentItem(position);
             }
         });
-//        webView.addJavascriptInterface(new JsCallJava() {
-//            @JavascriptInterface
-//            @Override   window.android_daipai.androidMethod()
-//            public void onCallback() {
-//
-//                Toast.makeText(getApplicationContext(),"JavaScript调用的java代码",Toast.LENGTH_SHORT).show();
-//
-//            }
-//        }, "demo");
+
     }
+
 }

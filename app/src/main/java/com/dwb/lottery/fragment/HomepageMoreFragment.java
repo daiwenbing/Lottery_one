@@ -20,7 +20,7 @@ import com.dwb.lottery.application.DSLApplication;
  */
 
 public class HomepageMoreFragment extends Fragment implements View.OnClickListener{
-    private RelativeLayout table2,table4,table5;
+    private RelativeLayout table2,table4,table5,table_check;
     private TextView tv;
     @Nullable
     @Override
@@ -37,10 +37,12 @@ public class HomepageMoreFragment extends Fragment implements View.OnClickListen
         table2=getView().findViewById(R.id.table2);
         table4=getView().findViewById(R.id.table4);
         table5=getView().findViewById(R.id.table5);
+        table_check=getView().findViewById(R.id.table_check);
         tv=getView().findViewById(R.id.tv);
         table2.setOnClickListener(this);
         table4.setOnClickListener(this);
         table5.setOnClickListener(this);
+        table_check.setOnClickListener(this);
     }
 
     @Override
@@ -56,6 +58,9 @@ public class HomepageMoreFragment extends Fragment implements View.OnClickListen
                 break;
             case R.id.table5:
                 DSLApplication.getInstance().onTerminate();
+                break;
+            case R.id.table_check:
+                Toast.makeText(getActivity(),"当前已是最新版本",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

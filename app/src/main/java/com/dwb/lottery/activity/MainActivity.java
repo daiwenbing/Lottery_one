@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,7 +24,6 @@ import com.dwb.lottery.fragment.HomeInformationFragment;
 import com.dwb.lottery.fragment.HomeInliveFragment;
 import com.dwb.lottery.fragment.HomepageFragment;
 import com.dwb.lottery.fragment.HomepageMoreFragment;
-import com.dwb.lottery.immersive.UltimateBar;
 import com.dwb.lottery.service.DownLoadAppService;
 import com.dwb.lottery.utils.Constant;
 import com.dwb.lottery.utils.DSLConnections;
@@ -50,9 +50,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DSLApplication.getInstance().addActivity(this);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);//全屏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);//避免重绘卡顿
         setContentView(R.layout.activity_main);
-        UltimateBar ultimateBar = new UltimateBar(this);
-        ultimateBar.setImmersionBar();
+/*        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setImmersionBar();*/
         manager=getSupportFragmentManager();
         if (savedInstanceState != null) {
             homepageFragment=(HomepageFragment) manager.findFragmentByTag("homepageFragment") ;
@@ -68,11 +70,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     @Override
     protected void onStart() {
         super.onStart();
-        if (NetWorkUtil.checkPackInfo(this, Constant.GO_Package)) {
-            Intent intent = getPackageManager().getLaunchIntentForPackage(Constant.GO_Package);
-            startActivity(intent);
-            DSLApplication.getInstance().onTerminate();
-        }
         returnback();
     }
 

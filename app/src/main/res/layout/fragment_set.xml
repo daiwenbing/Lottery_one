@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffeeeeee"
     android:orientation="vertical">
     <android.support.v7.widget.Toolbar
         android:id="@+id/activity_main_toolbar"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_width="match_parent"
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimaryDark">
@@ -37,12 +36,7 @@
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:src="@mipmap/ic_launcher" />
+
 
     <RelativeLayout
         android:id="@+id/table1"
@@ -97,10 +91,74 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/table4"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/all_layout_style"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="客服电话"
+            android:textColor="#ff000000"
+            android:textSize="16dp" />
+
+       <ImageView
+           android:id="@+id/txt_phone"
+           android:layout_centerVertical="true"
+           android:layout_alignParentRight="true"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@mipmap/item_check"/>
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/txt_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="400-772-0221"
+            android:textColor="#ff000000"
+            android:textSize="16dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/all_layout_style"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="客服QQ"
+            android:textColor="#ff000000"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/txt_qq"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/item_check"/>
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/txt_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="4445584733"
+            android:textColor="#ff000000"
+            android:textSize="16dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/table4"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:background="@drawable/all_layout_style"
         android:padding="15dp">
 
@@ -112,15 +170,36 @@
             android:textColor="#ff000000"
             android:textSize="16dp" />
 
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/item_check"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/table_check"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/all_layout_style"
+        android:padding="15dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:text="检测更新"
             android:textColor="#ff000000"
             android:textSize="16dp" />
-    </RelativeLayout>
 
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/item_check"/>
+    </RelativeLayout>
     <RelativeLayout
         android:id="@+id/table5"
         android:layout_width="match_parent"

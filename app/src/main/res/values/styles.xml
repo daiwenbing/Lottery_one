@@ -24,7 +24,6 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowNoTitle">true</item>
     </style>
-
     <style name="Theme.Shelves" parent="android:Theme">
         <item name="android:windowBackground">@mipmap/start2</item>
         <item name="android:windowNoTitle">true</item>
@@ -44,4 +43,5 @@
         <item name="android:windowContentOverlay">@null</item>
 
     </style>
+
 </resources>

@@ -17,46 +17,44 @@ import android.widget.ProgressBar;
 
 import com.dwb.lottery.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
-/**资讯
+
+/**
+ * 走势
  * Created by dwb on 2018/3/26.
  */
 
 public class HomeInformationFragment extends Fragment {
-    private ImageView img_back;
-    private WebView webview;
+    @BindView(R.id.webview)
+    WebView webview;
+    @BindView(R.id.progressbar)
+    ProgressBar progressbar;
+    @BindView(R.id.img_back1)
+    ImageView img_back1;
     private WebSettings webSettings;
-    private ProgressBar progressbar;
-
+    private Unbinder unbinder;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.webview_back_notitle_view,null);
+        View view = inflater.inflate(R.layout.webview_back_notitle_view, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initview();
-
     }
-    public void initview(){
-        progressbar= (ProgressBar)getView().findViewById(R.id.progressbar);
-        webview=(WebView)getView().findViewById(R.id.webview);
-        img_back=getView().findViewById(R.id.img_back);
-        img_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(webview.canGoBack()){
-                    webview.goBack();
-                }
-            }
-        });
+    public void initview() {
         init();
     }
-    private void init(){
+    private void init() {
         //WebView加载web资源
-        webview.loadUrl("http://m.159cai.com/gong/news.html");
+        webview.loadUrl("http://m.500.com/datachart/");
         webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);//启用加速，否则滑动界面不流畅
         webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -68,7 +66,7 @@ public class HomeInformationFragment extends Fragment {
 //        webSettings.setAppCacheEnabled(true);//是否使用缓存
         webSettings.setSupportZoom(true); // 支持缩放
         //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
-        webview.setWebViewClient(new WebViewClient(){
+        webview.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
@@ -80,7 +78,7 @@ public class HomeInformationFragment extends Fragment {
                 super.onPageFinished(view, url);
                 progressbar.setVisibility(View.INVISIBLE);
                 //编写 javaScript方法
-                String javascript =  "javascript:function hideOther() {" + "document.getElementsByClassName('top')[0].remove();}";
+                String javascript = "javascript:function hideOther() {" + "document.getElementsByClassName('ui-head')[0].remove();}";
 
                 //创建方法
                 view.loadUrl(javascript);
@@ -93,6 +91,10 @@ public class HomeInformationFragment extends Fragment {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 // TODO Auto-generated method stub
                 //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
+                if (url.equals("http://m.500.com/")||url.contains("500.com/user/index.php")){
+                    view.loadUrl("http://m.500.com/datachart/");
+                    return true;
+                }
                 view.loadUrl(url);
                 return false;
             }
@@ -103,15 +105,22 @@ public class HomeInformationFragment extends Fragment {
                 view.loadUrl("file:///android_asset/error.html");//加载本地网页的路径
             }
         });
-//        webView.addJavascriptInterface(new JsCallJava() {
-//            @JavascriptInterface
-//            @Override   window.android_daipai.androidMethod()
-//            public void onCallback() {
-//
-//                Toast.makeText(getApplicationContext(),"JavaScript调用的java代码",Toast.LENGTH_SHORT).show();
-//
-//            }
-//        }, "demo");
     }
 
+    @OnClick(R.id.img_back1)
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.img_back1:
+                if (webview.canGoBack()) {
+                    webview.goBack();
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

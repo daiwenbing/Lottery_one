@@ -55,6 +55,7 @@
     <RelativeLayout
         android:id="@+id/layout_img"
         android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
