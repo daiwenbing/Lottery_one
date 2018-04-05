@@ -15,6 +15,7 @@ import com.dwb.lottery.application.DSLApplication;
 import com.dwb.lottery.service.DownLoadAppService;
 import com.dwb.lottery.utils.Constant;
 import com.dwb.lottery.utils.DSLConnections;
+import com.dwb.lottery.utils.DSLContants;
 import com.dwb.lottery.utils.DateChange;
 import com.dwb.lottery.utils.NetWorkUtil;
 
@@ -61,7 +62,7 @@ public class SplashActivity extends Activity {
             startActivity(intent);
             DSLApplication.getInstance().onTerminate();
         } else {
-            String dateStr = "2018-4-29 1:21:28";
+            String dateStr = DSLContants.uodate_time;
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
                 Date data1= format.parse(dateStr);

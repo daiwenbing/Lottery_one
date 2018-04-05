@@ -48,7 +48,7 @@ public class Page_Fragment_Three extends Fragment {
     }
     private void init() {
         //WebView加载web资源
-        webview.loadUrl("http://m.500.com/maicp.htm");
+        webview.loadUrl("https://m.dididapiao.com/kjgg/list?agentId=100339");
         webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);//启用加速，否则滑动界面不流畅
         webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -71,14 +71,23 @@ public class Page_Fragment_Three extends Fragment {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 progressbar.setVisibility(View.INVISIBLE);
+                //footer_fix
+                 if (url.contains("https://m.dididapiao.com")) {
+                    javascripts = "javascript:function hideOther() {" +
+                            "document.getElementsByClassName('footer_fix')[0].remove();}";
+                }
+                //创建方法
+                view.loadUrl(javascripts);
+                //加载方法
+                view.loadUrl("javascript:hideOther();");
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 // TODO Auto-generated method stub
                 //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
-                if (url.equals("http://m.500.com/")||url.contains("500.com/user/index.php")){
-                    view.loadUrl("http://m.500.com/maicp.htm");
+                if (url.contains("m.dididapiao.com/index")||url.contains("/index?agentId=100339")||url.contains("/bet/tcdlt/index?agentId=100339")){
+                    view.loadUrl("https://m.dididapiao.com/kjgg/list?agentId=100339");
                     return true;
                 }
                 view.loadUrl(url);

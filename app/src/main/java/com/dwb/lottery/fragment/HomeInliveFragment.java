@@ -34,7 +34,6 @@ public class HomeInliveFragment extends Fragment {
     private List<String> mtitle;
     private HoeViewPageAdapter pageAdapter;
     private Unbinder unbinder;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -47,24 +46,21 @@ public class HomeInliveFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initview();
-
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
-
     public void initview() {
         list=new ArrayList<Fragment>();
-        list.add(new Page_Fragment_One());
-        list.add(new Page_Fragment_Two());
         list.add(new Page_Fragment_Three());
+        list.add(new Page_Fragment_Two());
+        list.add(new Page_Fragment_One());
         mtitle=new ArrayList<String>();
-        mtitle.add("时时比分");
+        mtitle.add("开奖公告");
         mtitle.add("大神推荐");
-        mtitle.add("更多彩种");
+        mtitle.add("实时比分");
         pageAdapter=new HoeViewPageAdapter(getChildFragmentManager(),list);
         home_live_viewpager.setAdapter(pageAdapter);
         home_live_viewpager.setCurrentItem(0);

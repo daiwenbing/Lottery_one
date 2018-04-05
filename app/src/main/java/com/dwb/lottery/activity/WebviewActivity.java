@@ -79,7 +79,7 @@ public class WebviewActivity extends AppCompatActivity {
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
         webSettings.setBuiltInZoomControls(true); // 设置显示缩放按钮
-//        webSettings.setAppCacheEnabled(true);//是否使用缓存
+        webSettings.setAppCacheEnabled(true);//是否使用缓存
         webSettings.setSupportZoom(true); // 支持缩放
         //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
         webview.setWebViewClient(new WebViewClient() {

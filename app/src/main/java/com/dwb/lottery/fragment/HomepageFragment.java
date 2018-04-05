@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.dwb.lottery.R;
 import com.dwb.lottery.activity.ListActivity;
+import com.dwb.lottery.activity.MapActivity;
 import com.dwb.lottery.activity.WebviewActivity;
 import com.dwb.lottery.utils.Constant;
 import com.dwb.lottery.viewpager_adaper.AdvAdapter;
@@ -276,13 +277,15 @@ public class HomepageFragment extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.homepage_layout_kj:
-                mintent = new Intent(getActivity(), WebviewActivity.class);
-                mintent.putExtra("url", "http://m.dididapiao.com/bet/ssq/index;jsessionid=A69D197C8A190FBA482D85A53F6BC92B.w3?clear=1&agentId=100107");
+                mintent = new Intent(getActivity(), MapActivity.class);
+                mintent.putExtra("title","双色球走势图");
+                mintent.putExtra("url", "http://m.500.com/datachart/ssq/jb.html");
                 startActivity(mintent);
                 break;
             case R.id.homepage_layout_gg:
-                mintent = new Intent(getActivity(), WebviewActivity.class);
-                mintent.putExtra("url", "http://m.dididapiao.com/bet/tcdlt/index;jsessionid=A69D197C8A190FBA482D85A53F6BC92B.w3?clear=1&agentId=100107");
+                mintent = new Intent(getActivity(), MapActivity.class);
+                mintent.putExtra("title","大乐透走势图");
+                mintent.putExtra("url", "http://m.500.com/datachart/ssq/jb.html");
                 startActivity(mintent);
                 break;
             case R.id.layout_kaijiang:
@@ -304,39 +307,46 @@ public class HomepageFragment extends Fragment {
             case R.id.layout_img:
                 //第一资讯
                 mintent = new Intent(getActivity(), WebviewActivity.class);
+                mintent.putExtra("title","新闻资讯");
                 mintent.putExtra("url", "http://m.159cai.com/gong/news.html");
                 startActivity(mintent);
                 break;
             case R.id.homepage_layout_3:
-                mintent = new Intent(getActivity(), WebviewActivity.class);
-                mintent.putExtra("url", "http://m.dididapiao.com/bet/fc3d/index;jsessionid=A69D197C8A190FBA482D85A53F6BC92B.w3?clear=1&agentId=100107");
+                mintent = new Intent(getActivity(), MapActivity.class);
+                mintent.putExtra("title","福彩3D走势图");
+                mintent.putExtra("url", "http://m.500.com/datachart/sd/jb.html");
                 startActivity(mintent);
                 break;
             case R.id.homepage_layout_4:
-                mintent = new Intent(getActivity(), WebviewActivity.class);
-                mintent.putExtra("url", "http://m.dididapiao.com/bet/y11x5/index;jsessionid=A69D197C8A190FBA482D85A53F6BC92B.w3?clear=1&agentId=100107");
+                mintent = new Intent(getActivity(), MapActivity.class);
+                mintent.putExtra("title","11选5走势图");
+                mintent.putExtra("url", "http://m.500.com/datachart/fjsyxw/jb.html");
                 startActivity(mintent);
                 break;
             case R.id.homepage_layout_5:
-                mintent = new Intent(getActivity(), WebviewActivity.class);
-                mintent.putExtra("url", "http://m.dididapiao.com/bet/jxk3/index;jsessionid=A69D197C8A190FBA482D85A53F6BC92B.w3?clear=1&agentId=100107");
+                mintent = new Intent(getActivity(), MapActivity.class);
+                mintent.putExtra("title","江西快三走势图");
+                mintent.putExtra("url", "http://m.500.com/datachart/jxk3/zx/2.html");
                 startActivity(mintent);
                 break;
             case R.id.homepage_layout_6:
-                mintent = new Intent(getActivity(), WebviewActivity.class);
-                mintent.putExtra("url", "http://m.dididapiao.com/bet/jsk3/index;jsessionid=A69D197C8A190FBA482D85A53F6BC92B.w3?clear=1&agentId=100107");
+                mintent = new Intent(getActivity(), MapActivity.class);
+                mintent.putExtra("title","快三走势图");
+                mintent.putExtra("url", "http://m.500.com/datachart/jsk3/zx/2.html");
                 startActivity(mintent);
                 break;
             case R.id.homepage_layout_7:
             case R.id.homepage_layout_8:
             case R.id.homepage_layout_9:
-                mintent = new Intent(getActivity(), WebviewActivity.class);
-                mintent.putExtra("url", "http://m.dididapiao.com/bet/tcpl3/index;jsessionid=925822A1DDCEBE6924C1D2CE8B630820.w3?clear=1&agentId=100107");
+                mintent = new Intent(getActivity(), MapActivity.class);
+                mintent.putExtra("title","幸运赛车走势图");
+                mintent.putExtra("url", "http://m.500.com/datachart/sfc/zfb/2.html");
                 startActivity(mintent);
                 break;
             case R.id.homepage_layout_10:
-                mintent = new Intent(getActivity(), WebviewActivity.class);
-                mintent.putExtra("url", "http://m.dididapiao.com/bet/tcpl5/index;jsessionid=925822A1DDCEBE6924C1D2CE8B630820.w3?clear=1&agentId=100107");
+                mintent = new Intent(getActivity(), MapActivity.class);
+                mintent.putExtra("title","排列五走势图");
+                mintent.putExtra("url", "http://m.500.com/datachart/plw/zx/0.html");
                 startActivity(mintent);
                 break;
         }
